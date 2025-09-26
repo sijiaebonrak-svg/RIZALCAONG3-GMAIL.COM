@@ -1,18 +1,241 @@
-*/config/development
-*/logs/log-*.php
-!*/logs/index.html
-*/cache/*
-!system/cache/*
-!*/cache/index.html
-!*/cache/.htaccess
+import React from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { AlertTriangle, Users, Heart, BookOpen } from "lucide-react";
 
-user_guide_src/build/*
-user_guide_src/cilexer/build/*
-user_guide_src/cilexer/dist/*
-user_guide_src/cilexer/pycilexer.egg-info/*
+// Single-file React component for a TB (TBC) informational website.
+// Usage:
+// 1) Put this file in a React project (Create React App, Vite, or Next.js page).
+// 2) Tailwind CSS must be configured in the project.
+// 3) If using Next.js, place as pages/index.js (adjust imports for shadcn/ui path if needed).
+// 4) All NPM libs used here (framer-motion, lucide-react, shadcn/ui) should be installed.
 
-#codeigniter 3
-application/logs/*
-!application/logs/index.html
-!application/logs/.htaccess
-/vendor/
+export default function TBCHomepage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
+      <header className="bg-white shadow-sm sticky top-0 z-40">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-red-600 rounded-md flex items-center justify-center text-white font-bold">TB</div>
+            <div>
+              <h1 className="text-lg font-semibold">Info TBC</h1>
+              <p className="text-xs text-slate-500">Tuberkulosis — Pencegahan, Gejala, Pengobatan</p>
+            </div>
+          </div>
+          <nav className="hidden md:flex gap-4 items-center">
+            <a href="#about" className="text-sm hover:underline">Tentang TBC</a>
+            <a href="#symptoms" className="text-sm hover:underline">Gejala</a>
+            <a href="#treatment" className="text-sm hover:underline">Pengobatan</a>
+            <a href="#resources" className="text-sm hover:underline">Sumber</a>
+            <Button className="ml-2">Hubungi</Button>
+          </nav>
+        </div>
+      </header>
+
+      <main className="max-w-6xl mx-auto px-6 py-12">
+        {/* Hero */}
+        <section className="grid md:grid-cols-2 gap-8 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl sm:text-4xl font-extrabold leading-tight">Memahami Tuberkulosis (TBC)</h2>
+            <p className="mt-4 text-slate-600">Tuberkulosis adalah penyakit menular yang umumnya menyerang paru-paru. Website ini memberi penjelasan singkat tentang penyebab, gejala, diagnosis, pengobatan, serta langkah pencegahan yang dapat diambil.</p>
+
+            <div className="mt-6 flex gap-3 flex-wrap">
+              <a href="#symptoms" className="inline-block">
+                <Button>Lihat Gejala</Button>
+              </a>
+              <a href="#treatment" className="inline-block">
+                <Button variant="ghost">Pengobatan & Rujukan</Button>
+              </a>
+            </div>
+
+            <div className="mt-8 grid grid-cols-3 gap-3">
+              <Card className="p-3">
+                <CardContent className="flex items-center gap-3">
+                  <AlertTriangle />
+                  <div>
+                    <div className="text-sm font-semibold">Penularan</div>
+                    <div className="text-xs text-slate-500">Terjadi lewat droplet udara.</div>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="p-3">
+                <CardContent className="flex items-center gap-3">
+                  <Users />
+                  <div>
+                    <div className="text-sm font-semibold">Kelompok Risiko</div>
+                    <div className="text-xs text-slate-500">Kontak dekat, sistem imun lemah.</div>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="p-3">
+                <CardContent className="flex items-center gap-3">
+                  <Heart />
+                  <div>
+                    <div className="text-sm font-semibold">Pencegahan</div>
+                    <div className="text-xs text-slate-500">Deteksi dini, vaksinasi, ventilasi baik.</div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="rounded-xl overflow-hidden shadow-lg"
+          >
+            <img src="https://images.unsplash.com/photo-1583886958888-2f2d6a4c3a49?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="medical" className="w-full h-64 object-cover" />
+          </motion.div>
+        </section>
+
+        {/* About */}
+        <section id="about" className="mt-12">
+          <h3 className="text-2xl font-bold">Apa itu TBC?</h3>
+          <p className="mt-3 text-slate-600">Tuberkulosis (TBC) disebabkan oleh bakteri Mycobacterium tuberculosis. TBC dapat mengenai berbagai organ, namun paling sering menyerang paru-paru (TBC paru). Tanpa pengobatan yang tepat, TBC dapat menjadi parah dan menular.</p>
+
+          <div className="mt-6 grid md:grid-cols-3 gap-4">
+            <Card>
+              <CardContent>
+                <h4 className="font-semibold">Penyebab</h4>
+                <p className="text-sm text-slate-500 mt-1">Infeksi bakteri Mycobacterium tuberculosis melalui droplet (batuk/bersin).</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent>
+                <h4 className="font-semibold">Bagaimana Menular</h4>
+                <p className="text-sm text-slate-500 mt-1">Kontak lama dengan pasien TBC aktif tanpa proteksi meningkatkan risiko.</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent>
+                <h4 className="font-semibold">Tingkat Keparahan</h4>
+                <p className="text-sm text-slate-500 mt-1">Bervariasi — dari laten (tidak bergejala) sampai aktif dan mengancam jiwa.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Symptoms */}
+        <section id="symptoms" className="mt-12">
+          <h3 className="text-2xl font-bold">Gejala Umum</h3>
+          <p className="mt-3 text-slate-600">Gejala TBC paru yang paling sering dilaporkan antara lain:</p>
+
+          <ul className="mt-4 grid sm:grid-cols-2 gap-4 list-none">
+            <li className="p-4 bg-white rounded-lg shadow-sm">
+              <strong>Batuk berkepanjangan</strong>
+              <div className="text-sm text-slate-500">Batuk lebih dari 2 minggu, kadang disertai darah.</div>
+            </li>
+            <li className="p-4 bg-white rounded-lg shadow-sm">
+              <strong>Demam & berkeringat malam</strong>
+              <div className="text-sm text-slate-500">Demam ringan yang berlangsung lama, keringat pada malam hari.</div>
+            </li>
+            <li className="p-4 bg-white rounded-lg shadow-sm">
+              <strong>Penurunan berat badan</strong>
+              <div className="text-sm text-slate-500">Penurunan nafsu makan dan berat badan yang tidak diinginkan.</div>
+            </li>
+            <li className="p-4 bg-white rounded-lg shadow-sm">
+              <strong>Sesak napas & nyeri dada</strong>
+              <div className="text-sm text-slate-500">Jika paru-paru sudah terpengaruh cukup berat.</div>
+            </li>
+          </ul>
+        </section>
+
+        {/* Diagnosis & Treatment */}
+        <section id="treatment" className="mt-12">
+          <h3 className="text-2xl font-bold">Diagnosis & Pengobatan</h3>
+          <p className="mt-3 text-slate-600">Diagnosa TBC biasanya menggunakan pemeriksaan dahak, rontgen dada, atau tes molekuler. Pengobatan TBC aktif standar melibatkan kombinasi antibiotik selama 6 bulan atau lebih sesuai protokol nasional.</p>
+
+          <div className="mt-6 grid md:grid-cols-2 gap-6">
+            <Card>
+              <CardContent>
+                <h4 className="font-semibold">Langkah Diagnosis</h4>
+                <ol className="mt-2 text-sm text-slate-500 list-decimal ml-5">
+                  <li>Screening gejala dan riwayat kontak.</li>
+                  <li>Pemeriksaan dahak (BTA) dan/atau tes molekuler (CB-NAAT).</li>
+                  <li>Rontgen dada untuk melihat gambaran paru.</li>
+                </ol>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent>
+                <h4 className="font-semibold">Pengobatan</h4>
+                <p className="text-sm text-slate-500 mt-2">Pengobatan kombinasi (mis. isoniazid, rifampicin, pyrazinamide, ethambutol) dipantau oleh petugas kesehatan. Patuhi jadwal obat dan kontrol rutin untuk mencegah resistensi obat (TBC MDR/XDR).</p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Prevention */}
+        <section className="mt-12">
+          <h3 className="text-2xl font-bold">Pencegahan</h3>
+          <div className="mt-4 grid sm:grid-cols-2 gap-6">
+            <div className="space-y-3">
+              <p className="text-slate-600">Langkah pencegahan yang efektif:</p>
+              <ul className="list-disc ml-5 text-sm text-slate-500">
+                <li>Ventilasi ruangan yang baik dan hindari kerumunan di ruangan tertutup.</li>
+                <li>Gunakan masker jika berada dekat dengan orang yang batuk.</li>
+                <li>Vaksin BCG untuk bayi sebagai proteksi terhadap bentuk berat TBC pada anak.</li>
+                <li>Deteksi dan pengobatan kontak erat jika ditemukan kasus aktif.</li>
+              </ul>
+            </div>
+            <div className="bg-white rounded-lg shadow-sm p-4">
+              <h4 className="font-semibold">Info Singkat</h4>
+              <p className="text-sm text-slate-500 mt-2">Jika Anda atau keluarga menunjukkan gejala TBC, segera konsultasi ke fasilitas kesehatan terdekat untuk pemeriksaan. Diagnosis dini + kepatuhan pengobatan menyelamatkan nyawa dan mencegah penularan.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Resources */}
+        <section id="resources" className="mt-12 mb-8">
+          <h3 className="text-2xl font-bold">Sumber & Rujukan</h3>
+          <p className="mt-3 text-slate-600">Untuk informasi lebih mendalam, rujuk ke panduan nasional TBC, WHO, dan layanan kesehatan setempat. (Tambahkan link rujukan resmi di deploy akhir.)</p>
+
+          <div className="mt-6 grid sm:grid-cols-3 gap-4">
+            <a className="block p-4 bg-white rounded-lg shadow-sm hover:shadow-md" href="#">
+              <BookOpen />
+              <div className="mt-2 font-semibold">Panduan Nasional</div>
+              <div className="text-xs text-slate-500">Protokol diagnosis & terapi</div>
+            </a>
+            <a className="block p-4 bg-white rounded-lg shadow-sm hover:shadow-md" href="#">
+              <Users />
+              <div className="mt-2 font-semibold">Pusat Kesehatan</div>
+              <div className="text-xs text-slate-500">Temukan layanan diagnostik & DOTS</div>
+            </a>
+            <a className="block p-4 bg-white rounded-lg shadow-sm hover:shadow-md" href="#">
+              <Heart />
+              <div className="mt-2 font-semibold">Support Groups</div>
+              <div className="text-xs text-slate-500">Komunitas pasien & pendamping</div>
+            </a>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="mt-12 py-8 bg-gradient-to-r from-white to-slate-100 rounded-lg flex items-center justify-between px-6">
+          <div>
+            <h4 className="text-xl font-bold">Butuh Bantuan?</h4>
+            <p className="text-sm text-slate-600 mt-1">Hubungi fasilitas kesehatan lokal atau pusat informasi TBC di daerah Anda untuk pemeriksaan lebih lanjut.</p>
+          </div>
+          <div>
+            <Button className="">Temukan Faskes</Button>
+          </div>
+        </section>
+
+      </main>
+
+      <footer className="bg-white border-t mt-12">
+        <div className="max-w-6xl mx-auto px-6 py-6 text-sm text-slate-500 flex items-center justify-between">
+          <div>© {new Date().getFullYear()} Info TBC — Informasi kesehatan umum, bukan pengganti konsultasi medis.</div>
+          <div className="flex gap-4">
+            <a href="#" className="hover:underline">Privasi</a>
+            <a href="#" className="hover:underline">Syarat</a>
+          </div>
+        </div>
+      </footer>
+    </div>
